@@ -1,0 +1,74 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "redchain"
+version = "0.1.0"
+description = "Gated, multi-agent red-team engagement orchestrator built on the Anthropic SDK."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+authors = [{ name = "Krishnendu De" }]
+keywords = ["red-team", "pentest", "offensive-security", "claude", "anthropic", "kill-chain"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+]
+dependencies = [
+    "anthropic>=0.40.0",
+    "typer>=0.12.0",
+    "pydantic>=2.5.0",
+    "jinja2>=3.1.0",
+    "pyyaml>=6.0",
+    "rich>=13.7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=4.1",
+    "ruff>=0.5",
+    "mypy>=1.10",
+]
+
+[project.urls]
+Homepage = "https://github.com/Krishcalin/RedChain"
+Repository = "https://github.com/Krishcalin/RedChain"
+Issues = "https://github.com/Krishcalin/RedChain/issues"
+
+[project.scripts]
+redchain = "redchain.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/redchain"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/redchain",
+    "README.md",
+    "LICENSE",
+    "pyproject.toml",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = [
+    "live: marks tests that require ANTHROPIC_API_KEY and hit the network",
+]

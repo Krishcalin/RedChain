@@ -1,0 +1,11 @@
+name: webapp
+description: Single-target web application engagement (MVP — scope, recon, report).
+phases:
+  - scope
+  - recon
+  - report
+defaults:
+  model: claude-sonnet-4-6
+notes: >
+  MVP preset. Once weaponize/delivery/exploit/installation/c2/objectives phases
+  are implemented, add them to `phases:` in the order shown in CLAUDE.md.

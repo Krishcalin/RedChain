@@ -1,0 +1,47 @@
+[
+  {
+    "id": "sqli-classic",
+    "title": "Classic SQL Injection",
+    "tags": ["webapp", "injection", "sqli"],
+    "cwe": "CWE-89",
+    "description": "User-controllable input concatenated into SQL queries without parameterization.",
+    "validation": "Send single-quote, observe error or behavioral difference; confirm with boolean/time-based payload.",
+    "remediation": "Use parameterized queries / prepared statements; deny dynamic table/column names from user input."
+  },
+  {
+    "id": "xss-reflected",
+    "title": "Reflected XSS",
+    "tags": ["webapp", "injection", "xss"],
+    "cwe": "CWE-79",
+    "description": "User input rendered into HTML response without contextual escaping.",
+    "validation": "Inject `<svg/onload=alert(1)>`; confirm execution in browser DOM.",
+    "remediation": "Contextual output encoding; CSP with strict default-src."
+  },
+  {
+    "id": "auth-bypass-idor",
+    "title": "Insecure Direct Object Reference",
+    "tags": ["webapp", "authz", "idor"],
+    "cwe": "CWE-639",
+    "description": "Object identifiers in URLs/bodies are honored without per-request authorization check.",
+    "validation": "Replace own object id with another tenant's; confirm read/write success.",
+    "remediation": "Server-side authorization on every object access; opaque, non-enumerable identifiers."
+  },
+  {
+    "id": "ssrf-classic",
+    "title": "Server-Side Request Forgery",
+    "tags": ["webapp", "ssrf"],
+    "cwe": "CWE-918",
+    "description": "Server fetches URLs supplied by the user without egress restriction.",
+    "validation": "Submit `http://169.254.169.254/latest/meta-data/` (AWS) or DNS callback; observe issuance.",
+    "remediation": "Egress allow-list; block link-local/metadata IPs; resolve once and pin."
+  },
+  {
+    "id": "open-redirect",
+    "title": "Open Redirect",
+    "tags": ["webapp", "redirect"],
+    "cwe": "CWE-601",
+    "description": "Redirect destination is taken from user-controllable parameter without allow-listing.",
+    "validation": "Set `?next=https://attacker.example`; confirm 30x to attacker domain.",
+    "remediation": "Allow-list of permitted redirect destinations; sign or hash the target."
+  }
+]

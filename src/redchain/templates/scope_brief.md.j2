@@ -1,0 +1,42 @@
+# Engagement Scope Brief
+
+**Target:** {{ scope.target }}
+**Preset:** {{ scope.preset }}
+
+## In Scope
+{% for item in scope.in_scope %}
+- {{ item }}
+{% else %}
+- _(none)_
+{% endfor %}
+
+## Out of Scope
+{% for item in scope.out_of_scope %}
+- {{ item }}
+{% else %}
+- _(none)_
+{% endfor %}
+
+## Objectives
+{% for item in scope.objectives %}
+- {{ item }}
+{% else %}
+- _(none)_
+{% endfor %}
+
+## Constraints
+{% for item in scope.constraints %}
+- {{ item }}
+{% else %}
+- _(none)_
+{% endfor %}
+
+## Rules of Engagement
+{% for item in scope.rules_of_engagement %}
+- {{ item }}
+{% else %}
+- _(none)_
+{% endfor %}
+
+## Authorization
+{{ scope.authorization_notes or "_(no authorization notes supplied)_" }}

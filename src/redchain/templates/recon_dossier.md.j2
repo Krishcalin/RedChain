@@ -1,0 +1,41 @@
+# Recon Dossier
+
+**Target:** {{ recon.target }}
+
+## Summary
+{{ recon.summary or "_(no summary)_" }}
+
+## Entrypoints
+{% for ep in recon.entrypoints %}
+- **{{ ep.method }} {{ ep.url }}** — {{ ep.notes }}
+{% else %}
+- _(none)_
+{% endfor %}
+
+## Services
+{% for s in recon.services %}
+- **{{ s.host }}{% if s.port %}:{{ s.port }}{% endif %}** {{ s.service }}{% if s.version %} {{ s.version }}{% endif %} — {{ s.notes }}
+{% else %}
+- _(none)_
+{% endfor %}
+
+## Technologies
+{% for t in recon.technologies %}
+- {{ t }}
+{% else %}
+- _(none)_
+{% endfor %}
+
+## Hosts
+{% for h in recon.hosts %}
+- {{ h }}
+{% else %}
+- _(none)_
+{% endfor %}
+
+## Leads
+{% for l in recon.leads %}
+- {{ l }}
+{% else %}
+- _(none)_
+{% endfor %}

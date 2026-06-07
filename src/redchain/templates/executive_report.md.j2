@@ -1,0 +1,25 @@
+# Executive Report — {{ report.target }}
+
+## Executive Summary
+
+{{ report.executive_summary }}
+
+## Findings
+{% for f in report.findings %}
+### {{ f.title }} ({{ f.severity | upper }})
+
+{{ f.description }}
+
+{% if f.evidence %}**Evidence:** {{ f.evidence }}{% endif %}
+
+{% if f.recommendation %}**Recommendation:** {{ f.recommendation }}{% endif %}
+{% else %}
+_(no findings recorded)_
+{% endfor %}
+
+## Next Steps
+{% for s in report.next_steps %}
+- {{ s }}
+{% else %}
+- _(none)_
+{% endfor %}
