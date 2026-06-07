@@ -1,5 +1,9 @@
 # RedChain
 
+<p align="center">
+  <img src="docs/banner.svg" alt="RedChain — Gated, multi-agent red-team engagement orchestrator" width="100%">
+</p>
+
 > Gated, multi-agent red-team engagement orchestrator built on the Anthropic SDK.
 
 RedChain runs offensive security engagements as a **state machine of phases**, where each phase is driven by a **specialist agent**, produces a **validated artifact**, and cannot advance until a **gate** confirms the artifact is complete. Designed for multi-day engagements with checkpoint/resume.
